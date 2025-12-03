@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Music Player</title>
+</head>
+<body>
+  <h2>My Music Player</h2>
+  <audio id="myAudio" controls>
+    <source src="WhatsApp_Ptt_2025-12-03_at_2.48.47_PM.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div style="margin-top: 10px;">
+    <button onclick="skip(-10)">⏪ -10s</button>
+    <button onclick="skip(10)">⏩ +10s</button>
+
+    <label for="speed">Speed:</label>
+    <select id="speed" onchange="changeSpeed()">
+      <option value="0.5">0.5x</option>
+      <option value="1" selected>1x</option>
+      <option value="1.5">1.5x</option>
+      <option value="2">2x</option>
+    </select>
+
+    <label>
+      <input type="checkbox" id="loop" onchange="toggleLoop()"> Loop
+    </label>
+  </div>
+
+  <script>
+    const audio = document.getElementById('myAudio');
+
+    function skip(seconds) { audio.currentTime += seconds; }
+    function changeSpeed() { audio.playbackRate = document.getElementById('speed').value; }
+    function toggleLoop() { audio.loop = document.getElementById('loop').checked; }
+  </script>
+</body>
+</html>
